@@ -1,0 +1,55 @@
+.row {
+    max-width: $grid-width; // dividir 1140px por 10(ver archivo _base.scss font-size)
+    // background-color: #eee;
+    margin: 0 auto;
+    // pseudo clase - selecciona todo menos el last child
+    &:not(:last-child) {
+        margin-bottom: $gutter-vertical;
+        @include respond(tab-port) {
+            margin-bottom: $gutter-vertical-small;
+        }
+    }
+    @include respond(tab-port) {
+        max-width: 50rem;
+        padding: 0 3rem;
+    }
+    @include clearfix;
+    /* [class^="col-"] selector de atributo, todas las clases que comienzan con "col-" */
+    /* [class*="col-"] selector de atributo, todas las clases que contienen con "col-" */
+    /* [class$="col-"] selector de atributo, todas las clases que terminan con "col-" */
+    [class^="col-"] {
+        // background-color: orangered;
+        float: left;
+        &:not(:last-child) {
+            margin-right: $gutter-horizontal;
+            @include respond(tab-port) {
+                margin-right: 0;
+                margin-bottom: $gutter-vertical-small;
+            }
+        }
+        @include respond(tab-port) {
+            width: 100% !important;
+        }
+    }
+    .col-1-of-2 {
+        // we can mix units in calc sass
+        width: calc((100% - #{$gutter-horizontal}) / 2);
+    }
+    .col-1-of-3 {
+        width: calc((100% - 2 * #{$gutter-horizontal}) / 3);
+    }
+    .col-2-of-3 {
+        width: calc( 2 * ((100% - 2 * #{$gutter-horizontal}) / 3) + #{$gutter-horizontal});
+    }
+    .col-1-of-4 {
+        width: calc((100% - 3 * #{$gutter-horizontal}) / 4);
+    }
+    .col-2-of-4 {
+        width: calc( 2 * ((100% - 3 * #{$gutter-horizontal}) / 4) + #{$gutter-horizontal});
+    }
+    .col-3-of-4 {
+        width: calc( 3 * ((100% - 3 * #{$gutter-horizontal}) / 4) + 2 * #{$gutter-horizontal});
+    }
+}
+
+// .row:not()

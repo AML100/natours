@@ -1,0 +1,45 @@
+/* RESET in the universal */
+
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    /* This defines what 1 rem is (10px) */
+    // 1 rem = 10 px; 10px/16px = 62.5%
+    font-size: 62.5%;
+    /* 10 / 16(default px font size) = 0.625   if we want to set up 10px as font-size in % */
+    @include respond(tab-land) {
+        // Width < 1200
+        font-size: 56.25%; // 1 rem = 9 px, 9/16 =  56.25%
+    }
+    @include respond(tab-port) {
+        // Width < 900
+        font-size: 50%; //1 rem = 8 px , 8/16 = 50%
+    }
+    // @include respond(phone) {
+    //     // Width < 600
+    //     font-size: 30%; //1 rem = 4.8 px , 8/16 = 30% de ejemplo
+    // }
+    @include respond(big-desktop) {
+        // Width > 1800
+        font-size: 75%; // 1 rem = 12, 12/16 = 75%
+    }
+}
+
+body {
+    box-sizing: border-box;
+    padding: 3rem;
+    @include respond(tab-port) {
+        padding: 0;
+    }
+}
+
+::selection {
+    background-color: $color-primary;
+    color: $color-white;
+}
